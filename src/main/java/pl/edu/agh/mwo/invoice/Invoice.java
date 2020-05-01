@@ -12,6 +12,8 @@ public class Invoice {
 
     public void addProduct(Product product) {
         addProduct(product, 1);
+
+        //"comment"
     }
 
     public void addProduct(Product product, Integer quantity) {
