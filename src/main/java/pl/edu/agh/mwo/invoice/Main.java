@@ -12,9 +12,9 @@ public class Main {
         oneInv.addProduct(new OtherProduct("piwo", new BigDecimal("3.10")), 1);
         oneInv.addProduct(new OtherProduct("wodeczka", new BigDecimal("30.20")), 1);
         secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.30")), 1);
-        secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.40")), 1);
+        secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.30")), 1);
         secondInv.addProduct(new OtherProduct("pireniczkek", new BigDecimal("8.90")), 1);
-        secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.50")), 1);
+        secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.30")), 1);
         printInv(oneInv);
         printInv(secondInv);
     }

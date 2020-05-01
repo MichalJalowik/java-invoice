@@ -2,6 +2,7 @@ package pl.edu.agh.mwo.invoice;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import pl.edu.agh.mwo.invoice.product.Product;
 
@@ -19,7 +20,33 @@ public class Invoice {
         if (product == null || quantity <= 0) {
             throw new IllegalArgumentException();
         }
-        products.put(product, quantity);
+
+        if (products.containsKey(product)) {
+            products.put(product, products.get(product) + quantity);
+        } else {
+            products.put(product, quantity);
+        }
+        
+//        int sum = 0;
+//
+//        for (Product test: products.keySet()) {
+//            if(test.getName().equals(product.getName())){
+//                sum ++;
+//            }
+//        }
+//
+//        if(sum == 0) {
+//            products.put(product, quantity);
+//
+//            for (Product product1 : products.keySet() ) {
+//                if(product1.getName().equals(product.getName())){
+//                   // products.replace(product,products.get(product) + quantity);
+//                }
+//            }
+//        } else if(sum > 0){
+//            System.out.println(product.getName() + " xxx" + product.getPrice() + " haschcode " +product.hashCode());
+//
+//        }
     }
 
     public BigDecimal getNetTotal() {
@@ -50,6 +77,12 @@ public class Invoice {
 
     public void getProducts() {
         for (Product product : products.keySet()) {
+
+//            if(product.getName().e){
+//
+//            }
+
+
             System.out.println(product.getName() + " " + product.getPrice() + " PLN"
                     + "     ilość: " + (products.get(product)));
         }
