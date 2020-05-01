@@ -1,8 +1,8 @@
 package pl.edu.agh.mwo.invoice;
 
 import java.math.BigDecimal;
-import java.util.*;
-
+import java.util.HashMap;
+import java.util.Map;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
@@ -50,7 +50,8 @@ public class Invoice {
 
     public void getProducts() {
         for (Product product : products.keySet()) {
-            System.out.println(product.getName() + " " + product.getPrice() + " PLN" + "     ilość: " + (products.get(product)));
+            System.out.println(product.getName() + " " + product.getPrice() + " PLN" +
+                    "     ilość: " + (products.get(product)));
         }
         System.out.println("");
     }
@@ -65,7 +66,7 @@ public class Invoice {
         return sum;
     }
 
-    public boolean checkIfDoubbled(String productName){
+    public boolean checkIfDoubbled(String productName) {
 
         for (Product checkIfDoubled : products.keySet()) {
             if (checkIfDoubled.getName().equals(productName)) {
