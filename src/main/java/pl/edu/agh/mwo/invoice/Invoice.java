@@ -50,8 +50,8 @@ public class Invoice {
 
     public void getProducts() {
         for (Product product : products.keySet()) {
-            System.out.println(product.getName() + " " + product.getPrice() + " PLN" +
-                    "     ilość: " + (products.get(product)));
+            System.out.println(product.getName() + " " + product.getPrice() + " PLN"
+                    + "     ilość: " + (products.get(product)));
         }
         System.out.println("");
     }

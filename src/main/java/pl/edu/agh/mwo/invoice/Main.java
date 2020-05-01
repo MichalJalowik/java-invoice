@@ -11,10 +11,10 @@ public class Main {
         Invoice secondInv = new Invoice();
         oneInv.addProduct(new OtherProduct("piwo", new BigDecimal("3.10")), 4);
         oneInv.addProduct(new OtherProduct("wodeczka", new BigDecimal("30.20")), 1);
-        secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.30")), 3);
+        secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.30")), 5);
         secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.40")), 3);
         secondInv.addProduct(new OtherProduct("pireniczkek", new BigDecimal("8.90")), 1);
-        secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.50")), 3);
+        secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.50")), 9);
         printInv(oneInv);
         printInv(secondInv);
     }
