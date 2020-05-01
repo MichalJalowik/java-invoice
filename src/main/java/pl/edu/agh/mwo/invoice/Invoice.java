@@ -6,6 +6,7 @@ import java.util.Map;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
+
     private Map<Product, Integer> products = new HashMap<>();
     private static int nextNumber = 0;
     private final int number = ++nextNumber;
@@ -48,4 +49,14 @@ public class Invoice {
     public int getNumber() {
         return number;
     }
+
+    public void getProducts() {
+
+        for (Product product: products.keySet()) {
+            System.out.println(product.getName() + " " + product.getPrice() + " PLN" + "     ilość: " + products.get(product));
+            }
+        System.out.println("");
+
+    }
+
 }
