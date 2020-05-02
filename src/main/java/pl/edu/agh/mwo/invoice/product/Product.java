@@ -61,10 +61,8 @@ public abstract class Product {
     }
 
     public BigDecimal getPriceWithTax(boolean isThisFreeDay) {
-
         BigDecimal sum = (price.multiply(taxPercent).add(price));
-
-        if(isThisFreeDay) {
+        if (isThisFreeDay) {
             return sum;
         }
         return (sum.add(duty));
