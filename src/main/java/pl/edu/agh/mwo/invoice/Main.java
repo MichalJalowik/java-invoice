@@ -1,16 +1,16 @@
 package pl.edu.agh.mwo.invoice;
 
+import java.math.BigDecimal;
 import pl.edu.agh.mwo.invoice.product.BottleOfWineProduct;
 import pl.edu.agh.mwo.invoice.product.FuelCanisterProduct;
 import pl.edu.agh.mwo.invoice.product.OtherProduct;
-
-import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args) {
         Invoice oneInv = new Invoice();
         Invoice secondInv = new Invoice();
         Invoice thirdInv = new Invoice();
+        
         oneInv.addProduct(new OtherProduct("piwo", new BigDecimal("3.10")), 1);
         oneInv.addProduct(new OtherProduct("wodeczka", new BigDecimal("30.20")), 1);
         secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.30")), 1);
