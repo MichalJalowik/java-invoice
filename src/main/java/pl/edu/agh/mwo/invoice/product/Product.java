@@ -2,6 +2,7 @@ package pl.edu.agh.mwo.invoice.product;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 public abstract class Product {
@@ -58,7 +59,6 @@ public abstract class Product {
     }
 
     public BigDecimal getPriceWithTax() {
-        MathContext m = new MathContext(4);
-        return (price.multiply(taxPercent).add(price)).add(duty).round(m);
+        return (price.multiply(taxPercent).add(price)).add(duty).setScale(2, RoundingMode.CEILING);
     }
 }

@@ -8,10 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pl.edu.agh.mwo.invoice.Invoice;
-import pl.edu.agh.mwo.invoice.product.DairyProduct;
-import pl.edu.agh.mwo.invoice.product.OtherProduct;
-import pl.edu.agh.mwo.invoice.product.Product;
-import pl.edu.agh.mwo.invoice.product.TaxFreeProduct;
+import pl.edu.agh.mwo.invoice.product.*;
 
 public class InvoiceTest {
     private Invoice invoice;
@@ -129,4 +126,29 @@ public class InvoiceTest {
         int number2 = new Invoice().getNumber();
         Assert.assertThat(number1, Matchers.lessThan(number2));
     }
+
+    @Test
+    public void checkIfDuplicatingProductOnInvoice() {
+        Product p = new OtherProduct("ciasteczka", new BigDecimal("5.30"));
+        invoice.addProduct(p, 1);
+        invoice.addProduct(p, 2);
+        Assert.assertEquals(3,invoice.getProductQty(p));
+    }
+
+    @Test
+    public void checkIfDutyCalculatedOK1() {
+        invoice.addProduct(new BottleOfWineProduct("michell",new BigDecimal("6.00")), 5);
+        invoice.addProduct(new FuelCanisterProduct("disel",new BigDecimal("4.00")), 5);
+        Assert.assertEquals(new BigDecimal("117.10"), invoice.getGrossTotal());
+    }
+
+    @Test
+    public void checkIfDutyCalculatedOK2() {
+        invoice.addProduct(new BottleOfWineProduct("michell",new BigDecimal("6.00")), 5);
+        invoice.addProduct(new FuelCanisterProduct("disel",new BigDecimal("4.00")), 5);
+        Assert.assertEquals(new BigDecimal("67.10"), invoice.getTaxTotal());
+    }
+
+
+
 }

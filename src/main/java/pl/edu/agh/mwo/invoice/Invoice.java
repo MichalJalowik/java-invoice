@@ -2,6 +2,7 @@ package pl.edu.agh.mwo.invoice;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -29,28 +30,25 @@ public class Invoice {
     }
 
     public BigDecimal getNetTotal() {
-        MathContext m = new MathContext(4);
         BigDecimal totalNet = BigDecimal.ZERO;
         for (Product product : products.keySet()) {
             BigDecimal quantity = new BigDecimal(products.get(product));
             totalNet = totalNet.add(product.getPrice().multiply(quantity));
         }
-        return totalNet.round(m);
+        return totalNet.setScale(2, RoundingMode.CEILING);
     }
 
     public BigDecimal getTaxTotal() {
-        MathContext m = new MathContext(4);
-        return (getGrossTotal().subtract(getNetTotal()).round(m));
+        return (getGrossTotal().subtract(getNetTotal()).setScale(2, RoundingMode.CEILING));
     }
 
     public BigDecimal getGrossTotal() {
-        MathContext m = new MathContext(4);
         BigDecimal totalGross = BigDecimal.ZERO;
         for (Product product : products.keySet()) {
             BigDecimal quantity = new BigDecimal(products.get(product));
             totalGross = totalGross.add(product.getPriceWithTax().multiply(quantity));
         }
-        return totalGross.round(m);
+        return totalGross.setScale(2, RoundingMode.CEILING);
     }
 
     public int getNumber() {
@@ -62,5 +60,14 @@ public class Invoice {
             System.out.println(product.getName() + " " + product.getPrice() + " PLN"
                     + "     ilość: " + (products.get(product)));
         }
+    }
+
+    public int getProductQty(Product product) {
+
+        int qty = 0;
+        for (Product product1: products.keySet()) {
+            qty = products.get(product);
+        }
+        return qty;
     }
 }
