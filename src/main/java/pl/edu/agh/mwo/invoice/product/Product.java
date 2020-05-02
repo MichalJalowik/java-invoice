@@ -64,14 +64,9 @@ public abstract class Product {
 
         BigDecimal sum = (price.multiply(taxPercent).add(price));
 
-        if(isThisFreeDay){
+        if(isThisFreeDay) {
             return sum;
         }
-
         return (sum.add(duty));
     }
-
-//    public boolean isTranspotationDay(boolean isThisFreeDay) {
-//        return isThisFreeDay;
-//    }
 }
