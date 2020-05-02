@@ -8,15 +8,16 @@ import pl.edu.agh.mwo.invoice.product.OtherProduct;
 public class Main {
     public static void main(String[] args) {
         Invoice oneInv = new Invoice();
-        Invoice secondInv = new Invoice();
-        Invoice thirdInv = new Invoice();
-        
         oneInv.addProduct(new OtherProduct("piwo", new BigDecimal("3.10")), 1);
         oneInv.addProduct(new OtherProduct("wodeczka", new BigDecimal("30.20")), 1);
+
+        Invoice secondInv = new Invoice();
         secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.30")), 1);
         secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.30")), 1);
         secondInv.addProduct(new OtherProduct("pireniczkek", new BigDecimal("8.90")), 1);
         secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.30")), 1);
+
+        Invoice thirdInv = new Invoice();
         thirdInv.addProduct(new BottleOfWineProduct("michell", new BigDecimal("6.00")), 1);
         thirdInv.addProduct(new FuelCanisterProduct("disel", new BigDecimal("4.00")), 1);
         printInv(oneInv);
