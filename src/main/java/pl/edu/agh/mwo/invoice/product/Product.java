@@ -61,6 +61,6 @@ public abstract class Product {
     }
 
     public BigDecimal getPriceWithTax() {
-        return (price.multiply(taxPercent).add(price)).add(duty).setScale(2, RoundingMode.CEILING);
+        return ((price.multiply(taxPercent).add(price)).add(duty));
     }
 }
