@@ -1,6 +1,7 @@
 package pl.edu.agh.mwo.invoice.product;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Objects;
 
 public abstract class Product {
@@ -9,6 +10,8 @@ public abstract class Product {
     private final BigDecimal price;
 
     private final BigDecimal taxPercent;
+
+    private final BigDecimal duty;
 
     @Override
     public boolean equals(Object o) {
@@ -24,11 +27,12 @@ public abstract class Product {
         return Objects.hash(name, price);
     }
 
-    protected Product(String name, BigDecimal price, BigDecimal tax) {
+    protected Product(String name, BigDecimal price, BigDecimal tax, BigDecimal duty) {
         if (name == null
                 || name.equals("")
                 || price == null
                 || tax == null
+                || duty == null
                 || tax.compareTo(new BigDecimal(0)) < 0
                 || price.compareTo(new BigDecimal(0)) < 0) {
             throw new IllegalArgumentException();
@@ -36,6 +40,7 @@ public abstract class Product {
         this.name = name;
         this.price = price;
         this.taxPercent = tax;
+        this.duty = duty;
     }
 
     public String getName() {
@@ -51,6 +56,7 @@ public abstract class Product {
     }
 
     public BigDecimal getPriceWithTax() {
-        return price.multiply(taxPercent).add(price);
+        MathContext m = new MathContext(4);
+        return (price.multiply(taxPercent).add(price)).add(duty).round(m);
     }
 }
