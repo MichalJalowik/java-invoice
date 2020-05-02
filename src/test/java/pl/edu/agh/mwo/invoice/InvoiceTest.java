@@ -148,7 +148,4 @@ public class InvoiceTest {
         invoice.addProduct(new FuelCanisterProduct("disel",new BigDecimal("4.00")), 5);
         Assert.assertEquals(new BigDecimal("67.10"), invoice.getTaxTotal());
     }
-
-
-
 }
