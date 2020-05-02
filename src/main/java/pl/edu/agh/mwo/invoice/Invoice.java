@@ -13,6 +13,7 @@ public class Invoice {
     private Map<Product, Integer> products = new HashMap<>();
     private static int nextNumber = 0;
     private final int number = ++nextNumber;
+    private boolean isOccurs = false;
 
     public void addProduct(Product product) {
         addProduct(product, 1);
@@ -46,7 +47,7 @@ public class Invoice {
         BigDecimal totalGross = BigDecimal.ZERO;
         for (Product product : products.keySet()) {
             BigDecimal quantity = new BigDecimal(products.get(product));
-            totalGross = totalGross.add(product.getPriceWithTax().multiply(quantity));
+            totalGross = totalGross.add(product.getPriceWithTax(isOccurs).multiply(quantity));
         }
         return totalGross.setScale(2, RoundingMode.CEILING);
     }
@@ -69,5 +70,9 @@ public class Invoice {
             qty = products.get(product);
         }
         return qty;
+    }
+
+    public void transportationFest(boolean isOccurs) {
+        this.isOccurs = isOccurs;
     }
 }

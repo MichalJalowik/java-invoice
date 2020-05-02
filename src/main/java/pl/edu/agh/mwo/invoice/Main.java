@@ -18,6 +18,7 @@ public class Main {
         secondInv.addProduct(new OtherProduct("ciasteczka", new BigDecimal("5.30")), 1);
 
         Invoice thirdInv = new Invoice();
+        thirdInv.transportationFest(true);
         thirdInv.addProduct(new BottleOfWineProduct("michell", new BigDecimal("6.00")), 1);
         thirdInv.addProduct(new FuelCanisterProduct("disel", new BigDecimal("4.00")), 1);
         printInv(oneInv);

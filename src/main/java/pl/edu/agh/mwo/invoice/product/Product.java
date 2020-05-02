@@ -60,7 +60,18 @@ public abstract class Product {
         return taxPercent;
     }
 
-    public BigDecimal getPriceWithTax() {
-        return ((price.multiply(taxPercent).add(price)).add(duty));
+    public BigDecimal getPriceWithTax(boolean isThisFreeDay) {
+
+        BigDecimal sum = (price.multiply(taxPercent).add(price));
+
+        if(isThisFreeDay){
+            return sum;
+        }
+
+        return (sum.add(duty));
     }
+
+//    public boolean isTranspotationDay(boolean isThisFreeDay) {
+//        return isThisFreeDay;
+//    }
 }

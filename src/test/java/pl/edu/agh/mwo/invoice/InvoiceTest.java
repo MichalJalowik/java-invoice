@@ -148,4 +148,12 @@ public class InvoiceTest {
         invoice.addProduct(new FuelCanisterProduct("disel",new BigDecimal("4.00")), 5);
         Assert.assertEquals(new BigDecimal("67.10"), invoice.getTaxTotal());
     }
+
+    @Test
+    public void checkIfTransporationFestIsDegreasingTax() {
+        invoice.addProduct(new BottleOfWineProduct("michell",new BigDecimal("6.00")), 1);
+        invoice.addProduct(new FuelCanisterProduct("disel",new BigDecimal("4.00")), 1);
+        invoice.transportationFest(true);
+        Assert.assertEquals(new BigDecimal("2.30"), invoice.getTaxTotal());
+    }
 }
